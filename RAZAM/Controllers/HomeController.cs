@@ -13,17 +13,17 @@ namespace RAZAM.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Notes()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Events()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult Files()
+        {
             return View();
         }
     }
