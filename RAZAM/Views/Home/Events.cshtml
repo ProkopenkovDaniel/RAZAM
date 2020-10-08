@@ -1,8 +1,83 @@
-﻿
+﻿@model IEnumerable<RAZAM.Models.Event>
 @{
     ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Events</h2>
+<div class="Add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add event</button></div>
+        </div>
+    </div>
+</div>
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modalH">Add Event</span>
+                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddEvent", "Home", FormMethod.Post))
+                {
+                    <p>Name of the event:</p>
+                    @Html.TextBox("Name", "name")
+                    <p>Location:</p>
+                    @Html.TextBox("Place", "location")
+                    <p>Date & Time:</p>
+                    @Html.TextBox("DateTime", @DateTime.Now.Date)
+                    <p>Type of event:</p>
+                    @Html.TextBox("Type", "RC")
+                    <p><input type="submit" value="Add" /></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="EventTips">
+    <div class="container">
+        @foreach (RAZAM.Models.Event ev in Model)
+        {
+            @Html.Partial("EventTip", ev)
+        }
+    </div>
+</div>
+@section scripts
+{
+    @*<script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("#AddButton").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>*@
+
+    <script type="text/javascript">
+        //$(function () {
+            //$.ajaxSetup({ cache: false });
+           // $("#DelButton").click(function (e) {
+             //   alert($.("ModelId").Value);
+                //e.preventDefault();
+              //  $.getJSON('/Home/DelEvent/$.("ModelId").Value', function (-- >-->-->@*@Model.Id*@<!--<!--< !--) {
+            //}
+           // );
+      //  }
+      //  }
+        //$(window).load(function () {
+
+            function Show() {
+                alert('hello');
+        }
+        var myButton = $('#AddButton');
+            myButton.onclick = Show();
+       // });
+
+    </script>
+}
+
 

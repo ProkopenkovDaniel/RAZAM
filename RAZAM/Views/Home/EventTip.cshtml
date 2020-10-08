@@ -1,0 +1,9 @@
+﻿@model RAZAM.Models.Event
+<input type="hidden" value="@Model.Id" name="EventId" id="ModelId" />
+<div class="row EventTip">
+    <div class="col-lg-1"><button class="btn-danger" id="DelButton" value="@Model.Id">X</button></div>
+    <div class="col-lg-1">@Model.Type</div>
+    <div class="col-lg-4">@Model.Name</div>
+    <div class="col-lg-4">@Model.Place</div>
+    <div class="col-lg-2">@Model.DateTime.ToShortDateString() @Model.DateTime.ToShortTimeString()</div>
+</div>
