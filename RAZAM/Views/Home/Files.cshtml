@@ -1,8 +1,25 @@
-﻿
+﻿@using RAZAM.Models 
+@model IEnumerable<RAZAM.Models.File>
 @{
     ViewBag.Title = "Files";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Files</h2>
+<div class="Add">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add event</button></div>
+    </div>
+</div>
+</div>
+<div class="FileTips">
+    <div class="container">
+        @foreach (RAZAM.Models.File fi in Model)
+        {
+            List<User> users = new List<User>();
+            users = ViewBag.Users;
+            ViewBag.User = users.Find(u=>u.Id==fi.UserId);
+            @Html.Partial("FileTip", fi)
+        }
+    </div>
+</div>
 

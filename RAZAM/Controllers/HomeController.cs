@@ -53,7 +53,9 @@ namespace RAZAM.Controllers
 
         public ActionResult Files()
         {
-            return View();
+            ViewBag.Users = db.Users.ToList();
+            var files = db.Files;
+            return View(files.ToList());
         }
     }
 }

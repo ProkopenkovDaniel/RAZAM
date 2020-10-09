@@ -41,17 +41,22 @@ textarea {
 
 }
 
-
-
-.EventTip {
+.Tip {
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 10px;
     text-align: center;
-    background-color: #222222;
     font-size: 14pt;
     color: #fff;
     border-radius: 15px;
+}
+
+.EventTip {
+    background-color: #222222;
+}
+
+.FileTip {
+    background-color: #222222;
 }
 
 .show {

@@ -252,8 +252,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010071023070_InitialCreate.cs" />
+    <Compile Include="Migrations\202010071023070_InitialCreate.designer.cs">
+      <DependentUpon>202010071023070_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010091103552_AddUserAndFileMigration.cs" />
+    <Compile Include="Migrations\202010091103552_AddUserAndFileMigration.designer.cs">
+      <DependentUpon>202010091103552_AddUserAndFileMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\RazamContext.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +305,7 @@
     <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Files.cshtml" />
     <Content Include="Views\Home\EventTip.cshtml" />
+    <Content Include="Views\Home\FileTip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +322,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010071023070_InitialCreate.resx">
+      <DependentUpon>202010071023070_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010091103552_AddUserAndFileMigration.resx">
+      <DependentUpon>202010091103552_AddUserAndFileMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

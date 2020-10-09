@@ -1,0 +1,19 @@
+﻿@model RAZAM.Models.File
+<div class="row FileTip Tip">
+    <div class="col-lg-2">@Model.Date.ToShortDateString() @Model.Date.ToShortTimeString()</div>
+    <div class="col-lg-4">@Model.Name</div>
+    <div class="col-lg-3">@ViewBag.User.Name</div>
+    <div class="col-lg-1">?</div>
+    <div class="col-lg-1">
+        @using (Html.BeginForm())
+        {
+            <button>D</button>
+        }
+    </div>
+    <div class="col-lg-1">
+        @using (Html.BeginForm())
+        {
+            <button>X</button>
+        }
+    </div>
+</div>
