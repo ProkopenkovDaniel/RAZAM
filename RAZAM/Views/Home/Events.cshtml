@@ -29,7 +29,7 @@
                     @Html.TextBox("DateTime", @DateTime.Now.Date)
                     <p>Type of event:</p>
                     @Html.TextBox("Type", "RC")
-                    <p><input type="submit" value="Add" /></p>
+                    <p><input type="submit" value="Add"/></p>
                 }
             </div>
         </div>
@@ -45,17 +45,13 @@
 </div>
 @section scripts
 {
-        <script type="text/javascript">
-            $(function () {
-                $.ajaxSetup({ cache: false });
-                $("#AddButton").click(function (e) {
-                    e.preventDefault();
-                    $.get(this.href, function (data) {
-                        $('#modDialog').modal('show');
-                    });
-                });
-            })
-        </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#AddButton").click(function () {
+                $('#modDialog').modal('show');
+            });
+        })
+    </script>
 }
 
 

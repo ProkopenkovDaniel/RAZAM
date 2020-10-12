@@ -1,15 +1,40 @@
-﻿@using RAZAM.Models 
+﻿@using RAZAM.Models
 @model IEnumerable<RAZAM.Models.File>
 @{
     ViewBag.Title = "Files";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="Add">
-<div class="container">
-    <div class="row">
-        <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add event</button></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add event</button></div>
+        </div>
     </div>
-</div>
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modalH">Add Event</span>
+                    <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("AddFile", "Home", FormMethod.Post))
+                    {
+                        <p>Discribe your file:</p>
+                        @Html.TextBox("Name", "name")
+                        <p>Path to your file:</p>
+                        @Html.TextBox("Path", "C:\\Documents\\File.ai")
+                        <p>Date & Time:</p>
+                        @Html.TextBox("DateTime", DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString(), new { @readonly = true })
+                        <p>User, who is sending it:</p>
+                        //должно быть динамическое указание пользователя
+                        @Html.TextBox("User", "Daniel", new { @readonly = true })
+                        <p><input type="submit" value="Add" /></p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="FileTips">
     <div class="container">
@@ -17,9 +42,18 @@
         {
             List<User> users = new List<User>();
             users = ViewBag.Users;
-            ViewBag.User = users.Find(u=>u.Id==fi.UserId);
+            ViewBag.User = users.Find(u => u.Id == fi.UserId);
             @Html.Partial("FileTip", fi)
         }
     </div>
 </div>
-
+@section scripts
+{
+    <script type="text/javascript">
+            $(function () {
+                $("#AddButton").click(function () {
+                    $('#modDialog').modal('show');
+                });
+            })
+    </script>
+}
