@@ -46,11 +46,20 @@
 @section scripts
 {
     <script type="text/javascript">
-        $(function () {
-            $("#AddButton").click(function () {
-                $('#modDialog').modal('show');
-            });
-        })
+        //$(function () {
+        //    $("#AddButton").click(function () {
+        //        $('#modDialog').modal('show');
+        //    });
+        //})
+        window.onload = function () {
+            var button = document.getElementById("AddButton");
+            button.onclick = ModalWindowShow;
+        }
+        function ModalWindowShow() {
+            var modal = document.getElementById("modDialog");
+            modal.style.display = "block"
+            modal.style.opacity = 1;
+        }
     </script>
 }
 

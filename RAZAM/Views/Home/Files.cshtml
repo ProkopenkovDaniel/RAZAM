@@ -7,7 +7,7 @@
 <div class="Add">
     <div class="container">
         <div class="row">
-            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add event</button></div>
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add file</button></div>
         </div>
     </div>
     <div id="modDialog" class="modal fade">
@@ -24,11 +24,8 @@
                         @Html.TextBox("Name", "name")
                         <p>Path to your file:</p>
                         @Html.TextBox("Path", "C:\\Documents\\File.ai")
-                        <p>Date & Time:</p>
-                        @Html.TextBox("DateTime", DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString(), new { @readonly = true })
-                        <p>User, who is sending it:</p>
-                        //должно быть динамическое указание пользователя
-                        @Html.TextBox("User", "Daniel", new { @readonly = true })
+                        @Html.TextBox("DateTime", DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString(), new { @hidden = true })
+                        @Html.TextBox("User", Session["user"], new { @hidden = true })
                         <p><input type="submit" value="Add" /></p>
                     }
                 </div>
@@ -50,10 +47,19 @@
 @section scripts
 {
     <script type="text/javascript">
-            $(function () {
-                $("#AddButton").click(function () {
-                    $('#modDialog').modal('show');
-                });
-            })
+        //$(function () {
+        //    $("#AddButton").click(function () {
+        //        $('#modDialog').modal('show');
+        //    });
+        //})
+        window.onload = function () {
+            var button = document.getElementById("AddButton");
+            button.onclick = ModalWindowShow;
+        }
+        function ModalWindowShow() {
+            var modal = document.getElementById("modDialog");
+            modal.style.display = "block"
+            modal.style.opacity = 1;
+        }
     </script>
 }

@@ -12,6 +12,8 @@ namespace RAZAM.Controllers
         RazamContext db = new RazamContext();
         public ActionResult Index()
         {
+            User us = db.Users.Find(1);
+            Session["user"] = us;
             return View();
         }
 
@@ -62,19 +64,9 @@ namespace RAZAM.Controllers
         [HttpPost]
         public ActionResult AddFile(File fi)
         {
-            //Код поддерживающий введение польщователя в БД (должен быть изменён)
+            db.Files.Add(fi);
+            db.SaveChanges();
             var files = db.Files;
-            File fiFind = db.Files.Find(fi.User);
-            if (fiFind != null)
-            {
-                fi.UserId = fiFind.Id;
-                db.Files.Add(fi);
-                db.SaveChanges();
-                files = db.Files;
-                return View("Files", files.ToList());
-            }
-            //files = db.Files;
-            //return View("Files", files.ToList());
             return Redirect("/Home/Files");
         }
     }
