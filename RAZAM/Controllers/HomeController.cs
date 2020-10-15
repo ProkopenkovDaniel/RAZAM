@@ -13,7 +13,7 @@ namespace RAZAM.Controllers
         public ActionResult Index()
         {
             User us = db.Users.Find(1);
-            Session["user"] = us;
+            Session["userId"] = us.Id;
             return View();
         }
 
@@ -33,8 +33,6 @@ namespace RAZAM.Controllers
         {
             db.Events.Add(ev);
             db.SaveChanges();
-            //var events = db.Events;
-            //return View("Events", events.ToList());
             return Redirect("/Home/Events");
         }
 
@@ -45,7 +43,6 @@ namespace RAZAM.Controllers
             Event ev = db.Events.Find(id);
             if (ev == null)
             {
-                events = db.Events;
                 return View("Events", events.ToList());
             }
             db.Events.Remove(ev);
@@ -64,9 +61,29 @@ namespace RAZAM.Controllers
         [HttpPost]
         public ActionResult AddFile(File fi)
         {
+            User us = db.Users.Find(fi.UserId);
+            if (us == null)
+            {
+                return Redirect("/Home/Files");
+            }
+            fi.User = us;
+            fi.Date = DateTime.Now;
             db.Files.Add(fi);
             db.SaveChanges();
             var files = db.Files;
+            return Redirect("/Home/Files");
+        }
+
+        [HttpGet]
+        public ActionResult DelFile(int? id)
+        {
+            File fi = db.Files.Find(id);
+            if (fi == null)
+            {
+                return Redirect("/Home/Files");
+            }
+            db.Files.Remove(fi);
+            db.SaveChanges();
             return Redirect("/Home/Files");
         }
     }

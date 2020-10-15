@@ -2,7 +2,7 @@
 <div class="row FileTip Tip">
     <div class="col-lg-2">@Model.Date.ToShortDateString() @Model.Date.ToShortTimeString()</div>
     <div class="col-lg-4">@Model.Name</div>
-    <div class="col-lg-3">@ViewBag.User.Name</div>
+    <div class="col-lg-3">@Model.User.Name</div>
     <div class="col-lg-1">?</div>
     <div class="col-lg-1">
         @using (Html.BeginForm())
@@ -11,7 +11,7 @@
         }
     </div>
     <div class="col-lg-1">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("DelFile/" + Model.Id.ToString(), "Home", FormMethod.Get))
         {
             <button>X</button>
         }

@@ -24,8 +24,7 @@
                         @Html.TextBox("Name", "name")
                         <p>Path to your file:</p>
                         @Html.TextBox("Path", "C:\\Documents\\File.ai")
-                        @Html.TextBox("DateTime", DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString(), new { @hidden = true })
-                        @Html.TextBox("User", Session["user"], new { @hidden = true })
+                        @Html.TextBox("UserId", Session["userId"], new { @hidden = true })
                         <p><input type="submit" value="Add" /></p>
                     }
                 </div>
@@ -47,11 +46,6 @@
 @section scripts
 {
     <script type="text/javascript">
-        //$(function () {
-        //    $("#AddButton").click(function () {
-        //        $('#modDialog').modal('show');
-        //    });
-        //})
         window.onload = function () {
             var button = document.getElementById("AddButton");
             button.onclick = ModalWindowShow;
