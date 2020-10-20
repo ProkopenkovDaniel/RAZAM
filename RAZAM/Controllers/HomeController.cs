@@ -12,8 +12,8 @@ namespace RAZAM.Controllers
         RazamContext db = new RazamContext();
         public ActionResult Index()
         {
-            User us = db.Users.Find(1);
-            Session["userId"] = us.Id;
+            //User us = db.Users.Find(1);
+            //Session["userId"] = us.Id;
             return View();
         }
 

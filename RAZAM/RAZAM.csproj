@@ -275,6 +275,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -287,10 +289,18 @@
     <Compile Include="Migrations\202010091103552_AddUserAndFileMigration.designer.cs">
       <DependentUpon>202010091103552_AddUserAndFileMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010191409228_DataMigration.cs" />
+    <Compile Include="Migrations\202010191409228_DataMigration.designer.cs">
+      <DependentUpon>202010191409228_DataMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RazamContext.cs" />
+    <Compile Include="Models\RazamUser.cs" />
+    <Compile Include="Models\RazamUserManager.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -333,6 +343,8 @@
     <Content Include="Views\Home\Files.cshtml" />
     <Content Include="Views\Home\EventTip.cshtml" />
     <Content Include="Views\Home\FileTip.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010091103552_AddUserAndFileMigration.resx">
       <DependentUpon>202010091103552_AddUserAndFileMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010191409228_DataMigration.resx">
+      <DependentUpon>202010191409228_DataMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
