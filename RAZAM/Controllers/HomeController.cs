@@ -70,13 +70,15 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
+            Guid guid = Guid.NewGuid();
             string path = System.IO.Path.Combine(Server.MapPath("~/Files"),
-                System.IO.Path.GetFileName(file.FileName) );
+                System.IO.Path.GetFileName(guid.ToString()) );
             file.SaveAs(path);
             File fi = new File();
             fi.Name = System.IO.Path.GetFileName(file.FileName);
             fi.Path = path;
             fi.ContentType = file.ContentType;
+            fi.GuidName = guid.ToString();
             fi.User = us;
             fi.UserId = us.Id;
             fi.Date = DateTime.Now;
@@ -95,8 +97,8 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
-            System.IO.File.Delete(Server.MapPath("~/Files/"
-                + fi.Name));
+            //System.IO.File.Delete(Server.MapPath("~/Files/"
+            //    + fi.GuidName));
             db.Files.Remove(fi);
             db.SaveChanges();
             return Redirect("/Home/Files");
@@ -110,7 +112,7 @@ namespace RAZAM.Controllers
             {
                 Redirect("/Home/Files");
             }
-            string filePath = Server.MapPath("~/Files/" + fi.Name);
+            string filePath = Server.MapPath("~/Files/" + fi.GuidName);
             return File(filePath, fi.ContentType, fi.Name);
         }
     }
