@@ -10,7 +10,6 @@ namespace RAZAM.Models
     public class RazamContext : IdentityDbContext<RazamUser>
     {
         public DbSet<Event> Events { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<File> Files { get; set; }
 
         public RazamContext() : base("RazamDb") { }

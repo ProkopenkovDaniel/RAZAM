@@ -342,3 +342,8 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.Cookies.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.OAuth.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.DataMigration.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.DMDeleteUser.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.Deleteuser.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChanging.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources

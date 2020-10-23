@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using RAZAM.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace RAZAM.Controllers
 {
     public class HomeController : Controller
     {
         RazamContext db = new RazamContext();
+        RazamUser user;
         public ActionResult Index()
         {
-            //User us = db.Users.Find(1);
-            //Session["userId"] = us.Id;
             return View();
         }
 
@@ -59,17 +60,29 @@ namespace RAZAM.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddFile(File fi)
+        public ActionResult AddFile(HttpPostedFileBase file)
         {
-            User us = db.Users.Find(fi.UserId);
-            if (us == null)
+            RazamUserManager userManager = HttpContext.GetOwinContext()
+                                            .GetUserManager<RazamUserManager>();
+            RazamUser user = userManager.FindByName(User.Identity.Name);
+            RazamUser us = db.Users.Find(user.Id);
+            if (user == null || file == null || file.ContentLength==0)
             {
                 return Redirect("/Home/Files");
             }
+            string path = System.IO.Path.Combine(Server.MapPath("~/Files"),
+                System.IO.Path.GetFileName(file.FileName) );
+            file.SaveAs(path);
+            File fi = new File();
+            fi.Name = System.IO.Path.GetFileName(file.FileName);
+            fi.Path = path;
+            fi.ContentType = file.ContentType;
             fi.User = us;
+            fi.UserId = us.Id;
             fi.Date = DateTime.Now;
             db.Files.Add(fi);
             db.SaveChanges();
+
             var files = db.Files;
             return Redirect("/Home/Files");
         }
@@ -82,9 +95,23 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
+            System.IO.File.Delete(Server.MapPath("~/Files/"
+                + fi.Name));
             db.Files.Remove(fi);
             db.SaveChanges();
             return Redirect("/Home/Files");
+        }
+
+        [HttpGet]
+        public FileResult DownloadFile(int? id)
+        {
+            File fi = db.Files.Find(id);
+            if (fi == null)
+            {
+                Redirect("/Home/Files");
+            }
+            string filePath = Server.MapPath("~/Files/" + fi.Name);
+            return File(filePath, fi.ContentType, fi.Name);
         }
     }
 }

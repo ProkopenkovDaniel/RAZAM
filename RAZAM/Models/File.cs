@@ -11,7 +11,9 @@ namespace RAZAM.Models
         public string Name { get; set; }
         public string Path { get; set; }
         public DateTime Date { get; set; }
-        public int? UserId { get; set; }
-        public User User { get; set; }
+        public string ContentType { get; set; }
+        public string GuidName { get; set; }
+        public string UserId { get; set; }
+        public RazamUser User { get; set; }
     }
 }
