@@ -347,3 +347,4 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.Deleteuser.resou
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChanging.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddedNoteTable.resources

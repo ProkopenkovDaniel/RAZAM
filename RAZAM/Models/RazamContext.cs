@@ -11,6 +11,7 @@ namespace RAZAM.Models
     {
         public DbSet<Event> Events { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
         public RazamContext() : base("RazamDb") { }
 

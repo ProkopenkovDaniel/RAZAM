@@ -2,7 +2,116 @@
 @{
     ViewBag.Title = "Notes";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //Styles.Render("~/Content/css/Site.css");
 }
 
-<h2>Notes</h2>
+<h2>Added Notes</h2>
+<div class="Add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add file</button></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="slider" id="SenderSlider">
+            <div class="slider_wrapper">
+                @*partial view*@
+                <div class="slider_item">
+                    <div>1</div>
+                </div>
+                <div class="slider_item">
+                    <div>2</div>
+                </div>
+                <div class="slider_item">
+                    <div>3</div>
+                </div>
+                <div class="slider_item">
+                    <div>4</div>
+                </div>
+                <div class="slider_item">
+                    <div>5</div>
+                </div>
+            </div>
+            @*<button class="slider_control slider_control_left" id="leftSenderButton"></button>
+            <button class="slider_control slider_control_right slider_control_show" id="rightSenderButton" ></button>*@
+            <a class="slider_control slider_control_left" id="leftSenderButton" href="#"><</a>
+            <a class="slider_control slider_control_right slider_control_show" id="rightSenderButton" href="#">></a>
+        </div>
+    </div>
+</div>
+<h2>My Notes</h2>
+@section scripts
+{
+    <script type="text/javascript">
+        //the main method
+        window.onload = function () {
+            var leftSenderButton = document.getElementById("leftSenderButton");
+            var rightSenderButton = document.getElementById("rightSenderButton");
+            //leftSenderButton.onclick = TransformItem("left", "SenderSlider");
+            //rightSenderButton.onclick = TransformItem("right", "SenderSlider");
+        }
+
+        //functions
+        function TransformItem(direct, idOfSlider) {
+
+            var mainElement = document.getElementById(idOfSlider);
+            var sliderWrapper = mainElement.querySelector('.slider_wrapper');
+            var sliderItems = mainElement.querySelectorAll('.slider_item');
+            //var sliderControls = mainElement.querySelectorAll('.slider_control');
+            var sliderControlLeft = mainElement.querySelector('.slider_control_left');
+            var sliderControlRight = mainElement.querySelector('.slider_control_right');
+            var wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width);
+            var itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width);
+
+            var positionLeftItem = 0;
+            var transform = 0;
+            var step = itemWidth / wrapperWidth * 100;
+            var items = [];
+
+            sliderItems.forEach(function (item, index) {
+                items.push({ item: item, position: index, transform: 0 });
+            });
+
+            var position = {
+                getMin: 0,
+                getMax: items.length - 1,
+            }
+
+            if (direct === 'right') {
+                if ((positionLeftItem + wrapperWidth / itemWidth - 1) >= position.getMax) {
+                    return;
+                }
+                if (!sliderControlLeft.classList.contains('slider_control_show')) {
+                    sliderControlLeft.classList.add('slider_control_show');
+                }
+                if (sliderControlRight.classList.contains('slider_control_show')
+                    && (positionLeftItem + wrapperWidth / itemWidth) >= position.getMax) {
+                    sliderControlRight.classList.remove('slider_control_show');
+                }
+                positionLeftItem++;
+                transform -= step;
+            }
+
+            if (direct === 'left') {
+                if (positionLeftItem <= position.getMin) {
+                    return;
+                }
+                if (!sliderControlRight.classList.contains('slider_control_show')) {
+                    sliderControlRight.classList.add('slider_control_show');
+                }
+                if (sliderControlLeft.classList.contains('slider_control_show')
+                    && (positionLeftItem - 1 <= position.getMin)) {
+                    sliderControlLeft.classList.remove('slider_control_show');
+                }
+                positionLeftItem--;
+                transform += step;
+            }
+            sliderWrapper.style.transform = 'translateX(' + transform + '%)';
+        }
+
+     </script>
+     }
+
 

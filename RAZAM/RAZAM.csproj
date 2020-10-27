@@ -313,10 +313,15 @@
     <Compile Include="Migrations\202010231333518_AddingGuidForFileModel.designer.cs">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010261039386_AddedNoteTable.cs" />
+    <Compile Include="Migrations\202010261039386_AddedNoteTable.designer.cs">
+      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\RazamContext.cs" />
     <Compile Include="Models\RazamUser.cs" />
     <Compile Include="Models\RazamUserManager.cs" />
@@ -328,6 +333,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010231333518_AddingGuidForFileModel.resx">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261039386_AddedNoteTable.resx">
+      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

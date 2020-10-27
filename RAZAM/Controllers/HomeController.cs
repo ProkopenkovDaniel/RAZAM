@@ -97,8 +97,8 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
-            //System.IO.File.Delete(Server.MapPath("~/Files/"
-            //    + fi.GuidName));
+            System.IO.File.Delete(Server.MapPath("~/Files/"
+                + fi.GuidName));
             db.Files.Remove(fi);
             db.SaveChanges();
             return Redirect("/Home/Files");
