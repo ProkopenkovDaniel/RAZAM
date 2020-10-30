@@ -293,15 +293,59 @@
     <Compile Include="Migrations\202010191409228_DataMigration.designer.cs">
       <DependentUpon>202010191409228_DataMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010201347515_DMDeleteUser.cs" />
+    <Compile Include="Migrations\202010201347515_DMDeleteUser.designer.cs">
+      <DependentUpon>202010201347515_DMDeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010201543332_Deleteuser.cs" />
+    <Compile Include="Migrations\202010201543332_Deleteuser.designer.cs">
+      <DependentUpon>202010201543332_Deleteuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010220825213_UserIdTypeChanging.cs" />
+    <Compile Include="Migrations\202010220825213_UserIdTypeChanging.designer.cs">
+      <DependentUpon>202010220825213_UserIdTypeChanging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010231010481_ChangeFileModelMigration.cs" />
+    <Compile Include="Migrations\202010231010481_ChangeFileModelMigration.designer.cs">
+      <DependentUpon>202010231010481_ChangeFileModelMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010231333518_AddingGuidForFileModel.cs" />
+    <Compile Include="Migrations\202010231333518_AddingGuidForFileModel.designer.cs">
+      <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261039386_AddedNoteTable.cs" />
+    <Compile Include="Migrations\202010261039386_AddedNoteTable.designer.cs">
+      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010281214569_ChangeNoteModel.cs" />
+    <Compile Include="Migrations\202010281214569_ChangeNoteModel.designer.cs">
+      <DependentUpon>202010281214569_ChangeNoteModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010291314020_RecoverDataBase.cs" />
+    <Compile Include="Migrations\202010291314020_RecoverDataBase.designer.cs">
+      <DependentUpon>202010291314020_RecoverDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010291319361_RecoverDataBaseAgain.cs" />
+    <Compile Include="Migrations\202010291319361_RecoverDataBaseAgain.designer.cs">
+      <DependentUpon>202010291319361_RecoverDataBaseAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010291340004_RecoverDB.cs" />
+    <Compile Include="Migrations\202010291340004_RecoverDB.designer.cs">
+      <DependentUpon>202010291340004_RecoverDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010300949101_AddIdField.cs" />
+    <Compile Include="Migrations\202010300949101_AddIdField.designer.cs">
+      <DependentUpon>202010300949101_AddIdField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\RazamContext.cs" />
     <Compile Include="Models\RazamUser.cs" />
     <Compile Include="Models\RazamUserManager.cs" />
     <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +353,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\SliderScript.js" />
+    <Content Include="Content\SliderStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -345,9 +392,13 @@
     <Content Include="Views\Home\FileTip.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\SenderNoteTip.cshtml" />
+    <Content Include="Views\Home\ReceiverNoteTip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -371,6 +422,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010191409228_DataMigration.resx">
       <DependentUpon>202010191409228_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201347515_DMDeleteUser.resx">
+      <DependentUpon>202010201347515_DMDeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201543332_Deleteuser.resx">
+      <DependentUpon>202010201543332_Deleteuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010220825213_UserIdTypeChanging.resx">
+      <DependentUpon>202010220825213_UserIdTypeChanging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010231010481_ChangeFileModelMigration.resx">
+      <DependentUpon>202010231010481_ChangeFileModelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010231333518_AddingGuidForFileModel.resx">
+      <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261039386_AddedNoteTable.resx">
+      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010281214569_ChangeNoteModel.resx">
+      <DependentUpon>202010281214569_ChangeNoteModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291314020_RecoverDataBase.resx">
+      <DependentUpon>202010291314020_RecoverDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291319361_RecoverDataBaseAgain.resx">
+      <DependentUpon>202010291319361_RecoverDataBaseAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010291340004_RecoverDB.resx">
+      <DependentUpon>202010291340004_RecoverDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010300949101_AddIdField.resx">
+      <DependentUpon>202010300949101_AddIdField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

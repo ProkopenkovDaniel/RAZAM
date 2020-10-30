@@ -342,3 +342,14 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.Cookies.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\bin\Microsoft.Owin.Security.OAuth.xml
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.DataMigration.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.DMDeleteUser.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.Deleteuser.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChanging.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddedNoteTable.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeNoteModel.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBase.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBaseAgain.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDB.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddIdField.resources

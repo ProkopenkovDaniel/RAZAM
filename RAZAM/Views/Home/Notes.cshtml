@@ -1,8 +1,76 @@
-﻿
+﻿@model IEnumerable<RAZAM.Models.Note>
 @{
     ViewBag.Title = "Notes";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @Scripts.Render("~/Scripts/SliderScript.js");
+    @Styles.Render("~/Content/SliderStyle.css");
 }
+<h2>Added Notes</h2>
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modalH">Add Event</span>
+                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddNote", "Home", FormMethod.Post))
+                {
+                    <p>Name of the event:</p>
+                    @Html.TextBox("Name", "name")
+                    <p>Location:</p>
+                    @Html.TextBox("Description", "location")
+                    @*<p>The receiver:</p>
+                    //The list of users if grout has to be here
+                    @Html.TextBox("Receiver.UserName", "receiver")*@
+                    <p><input type="submit" value="Add" /></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="Add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add file</button></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="slider" id="SenderSlider">
+            <div class="slider_wrapper">
+                @foreach (RAZAM.Models.Note note in Model)
+                {
+                    if (note.Sender.Id.ToString() == ViewBag.UserId)
+                    {
+                        /*Status cheking has to be here*/
+                        @Html.Partial("SenderNoteTip", note)
+                    }
+                }
+            </div>
+            <a class="slider_control slider_control_left SenderSliderControl" id="leftReceiverButton" href="#"><</a>
+            <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightReceiverButton" href="#">></a>
+        </div>
+    </div>
+</div>
+<h2>My Notes</h2>
+<div class="container">
+    <div class="row">
+        <div class="slider" id="ReceiverSlider">
+            <div class="slider_wrapper">
+                @foreach (RAZAM.Models.Note note in Model)
+                {
+                    if (note.Receiver == ViewBag.UserId)
+                    {
+                        @Html.Partial("NoteTip", note)
+                    }
+                }
+            </div>
+            <a class="slider_control slider_control_left ReceiverSliderControl" id="leftSenderButton" href="#"><</a>
+            <a class="slider_control slider_control_right slider_control_show ReceiverSliderControl" id="rightSenderButton" href="#">></a>
+        </div>
+    </div>
+</div>
 
-<h2>Notes</h2>
 

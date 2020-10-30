@@ -1,0 +1,26 @@
+﻿@model RAZAM.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Sign in</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.ValidationSummary(true)
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+        <p>
+            <label>Email</label><br />
+            @Html.EditorFor(x=>x.Email)
+        </p>
+        <p>
+            <label>Password</label><br />
+            @Html.EditorFor(x=>x.Password)
+        </p>
+        <p><button type="submit">Sign In</button></p>
+    </div>
+}
+
+
