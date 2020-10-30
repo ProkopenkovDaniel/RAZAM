@@ -5,6 +5,13 @@ using System.Web;
 
 namespace RAZAM.Models
 {
+    public enum State
+    {
+        unread,
+        deflected,
+        executed,
+        accepted
+    }
     public class Note
     {
         public int id { get; set; }
@@ -13,6 +20,6 @@ namespace RAZAM.Models
         public DateTime Date { get; set; }
         public RazamUser Sender { get; set; }
         public RazamUser Receiver { get; set; }
-        public string Status { get; set; } //enum
+        public State Status { get; set; }
     }
 }

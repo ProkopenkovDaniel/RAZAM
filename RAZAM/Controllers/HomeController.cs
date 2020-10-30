@@ -20,7 +20,36 @@ namespace RAZAM.Controllers
 
         public ActionResult Notes()
         {
-            return View();
+            /*Getting the Id if current user*/
+            RazamUserManager userManager = HttpContext.GetOwinContext()
+                                            .GetUserManager<RazamUserManager>();
+            RazamUser user = userManager.FindByName(User.Identity.Name);
+            ViewBag.UserId = user.Id;
+            /*Get the List of Notes from DataBase, there has to be condition*/
+            var notes = db.Notes;
+            /*Sort notes by Datatime*/
+            return View(notes.ToList());
+        }
+
+        public ActionResult AddNote(Note note)
+        {
+            RazamUserManager userManager = HttpContext.GetOwinContext()
+                                            .GetUserManager<RazamUserManager>();
+            RazamUser user = userManager.FindByName(User.Identity.Name);
+            RazamUser us = db.Users.Find(user.Id);
+            RazamUser receiver = db.Users.Find("865f4ca1-dcbd-4a2d-a2af-f3ab771207f9");
+            if (us == null || receiver == null)
+            {
+                return Redirect("/Home/Files");
+            }
+            note.Receiver = receiver;
+            note.Sender = us;
+            note.Date = DateTime.Now;
+            note.Status = State.unread;
+            db.Notes.Add(note);
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
+
         }
 
         public ActionResult Events()
@@ -85,7 +114,7 @@ namespace RAZAM.Controllers
             db.Files.Add(fi);
             db.SaveChanges();
 
-            var files = db.Files;
+            //var files = db.Files;
             return Redirect("/Home/Files");
         }
 

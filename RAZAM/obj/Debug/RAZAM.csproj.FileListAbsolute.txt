@@ -348,3 +348,8 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChangi
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddedNoteTable.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeNoteModel.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBase.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBaseAgain.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDB.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddIdField.resources
