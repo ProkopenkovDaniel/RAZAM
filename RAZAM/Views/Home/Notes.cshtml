@@ -42,7 +42,7 @@
             <div class="slider_wrapper">
                 @foreach (RAZAM.Models.Note note in Model)
                 {
-                    if (note.Sender.Id.ToString() == ViewBag.UserId)
+                    if (note.SenderId.ToString() == ViewBag.UserId)
                     {
                         /*Status cheking has to be here*/
                         @Html.Partial("SenderNoteTip", note)
@@ -61,7 +61,7 @@
             <div class="slider_wrapper">
                 @foreach (RAZAM.Models.Note note in Model)
                 {
-                    if (note.Receiver == ViewBag.UserId)
+                    if (note.ReceiverId == ViewBag.UserId)
                     {
                         @Html.Partial("NoteTip", note)
                     }

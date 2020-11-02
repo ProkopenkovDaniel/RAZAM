@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RAZAM.Models
 {
@@ -19,6 +20,7 @@ namespace RAZAM.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
+        //[InverseProperty("Notes")]
         public RazamUser Sender { get; set; }
         public string SenderId { get; set; }
         public RazamUser Receiver { get; set; }

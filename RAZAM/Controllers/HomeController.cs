@@ -43,7 +43,9 @@ namespace RAZAM.Controllers
                 return Redirect("/Home/Files");
             }
             note.Receiver = receiver;
+            note.ReceiverId = receiver.Id;
             note.Sender = us;
+            note.SenderId = us.Id;
             note.Date = DateTime.Now;
             note.Status = State.unread;
             db.Notes.Add(note);
