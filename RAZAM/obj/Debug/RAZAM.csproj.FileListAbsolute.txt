@@ -348,3 +348,4 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChangi
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddNoteTable.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UsersProblem.resources

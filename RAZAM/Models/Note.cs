@@ -20,9 +20,10 @@ namespace RAZAM.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        //[InverseProperty("Notes")]
+        [InverseProperty("SendedNotes")]
         public RazamUser Sender { get; set; }
         public string SenderId { get; set; }
+        [InverseProperty("ReceivedNotes")]
         public RazamUser Receiver { get; set; }
         public string ReceiverId { get; set; }
         public State Status { get; set; }
