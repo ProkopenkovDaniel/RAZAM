@@ -26,7 +26,13 @@ namespace RAZAM.Controllers
             RazamUser user = userManager.FindByName(User.Identity.Name);
             ViewBag.UserId = user.Id;
             /*Get the List of Notes from DataBase, there has to be condition*/
+            var users = db.Users;
             var notes = db.Notes;
+            foreach (Note note in notes.ToList())
+            {
+                note.Receiver = db.Users.Find(note.ReceiverId);
+                note.Sender = db.Users.Find(note.SenderId);
+            }
             /*Sort notes by Datatime*/
             return View(notes.ToList());
         }
@@ -87,6 +93,7 @@ namespace RAZAM.Controllers
         {
             ViewBag.Users = db.Users.ToList();
             var files = db.Files;
+            List<File> file = files.ToList();
             return View(files.ToList());
         }
 
