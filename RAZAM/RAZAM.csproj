@@ -313,13 +313,13 @@
     <Compile Include="Migrations\202010231333518_AddingGuidForFileModel.designer.cs">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011021419541_AddNoteTable.cs" />
-    <Compile Include="Migrations\202011021419541_AddNoteTable.designer.cs">
-      <DependentUpon>202011021419541_AddNoteTable.cs</DependentUpon>
+    <Compile Include="Migrations\202011040935508_AddNoteTable.cs" />
+    <Compile Include="Migrations\202011040935508_AddNoteTable.designer.cs">
+      <DependentUpon>202011040935508_AddNoteTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011021440016_UsersProblem.cs" />
-    <Compile Include="Migrations\202011021440016_UsersProblem.designer.cs">
-      <DependentUpon>202011021440016_UsersProblem.cs</DependentUpon>
+    <Compile Include="Migrations\202011041343564_CleanUpTheNoteTable.cs" />
+    <Compile Include="Migrations\202011041343564_CleanUpTheNoteTable.designer.cs">
+      <DependentUpon>202011041343564_CleanUpTheNoteTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
@@ -330,6 +330,7 @@
     <Compile Include="Models\RazamUser.cs" />
     <Compile Include="Models\RazamUserManager.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserNote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -422,11 +423,11 @@
     <EmbeddedResource Include="Migrations\202010231333518_AddingGuidForFileModel.resx">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011021419541_AddNoteTable.resx">
-      <DependentUpon>202011021419541_AddNoteTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011040935508_AddNoteTable.resx">
+      <DependentUpon>202011040935508_AddNoteTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011021440016_UsersProblem.resx">
-      <DependentUpon>202011021440016_UsersProblem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011041343564_CleanUpTheNoteTable.resx">
+      <DependentUpon>202011041343564_CleanUpTheNoteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

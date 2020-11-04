@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RAZAM.Models;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Ajax.Utilities;
+using System.Runtime.Remoting.Channels;
 
 namespace RAZAM.Controllers
 {
@@ -26,9 +28,23 @@ namespace RAZAM.Controllers
             RazamUser user = userManager.FindByName(User.Identity.Name);
             ViewBag.UserId = user.Id;
             /*Get the List of Notes from DataBase, there has to be condition*/
-            var notes = db.Notes;
+            var userNotes = from note in db.Notes
+                            join sender in db.Users on note.SenderId equals sender.Id
+                            join receiver in db.Users on note.ReceiverId equals receiver.Id
+                            select new UserNote
+                            {
+                                id = note.id,
+                                Name = note.Name,
+                                Description = note.Description,
+                                Date = note.Date,
+                                Status = note.Status,
+                                SenderId = sender.Id,
+                                SenderName = sender.UserName,
+                                ReceiverId = receiver.Id,
+                                ReceiverName = receiver.UserName
+                            };
             /*Sort notes by Datatime*/
-            return View(notes.ToList());
+            return View(userNotes.ToList());
         }
 
         public ActionResult AddNote(Note note)
@@ -42,9 +58,9 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
-            note.Receiver = receiver;
+            //note.Receiver = receiver;
             note.ReceiverId = receiver.Id;
-            note.Sender = us;
+           // note.Sender = us;
             note.SenderId = us.Id;
             note.Date = DateTime.Now;
             note.Status = State.unread;

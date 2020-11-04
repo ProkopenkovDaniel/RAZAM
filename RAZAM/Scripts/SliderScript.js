@@ -10,9 +10,14 @@ var itemWidth;
 var positionLeftItem = 0;
 var transform = 0;
 var step;
-
+setTimeout(function () {
+    window.location.reload();
+    }, 30000);
 //the main method
-window.onload = function () {
+window.addEventListener("load", function () {
+    //setTimeout(function () {
+    //    window.location.reload(), 30000
+    //});
     var leftSenderButton = document.getElementById("leftSenderButton");
     var rightSenderButton = document.getElementById("rightSenderButton");
     var rightReceiverButton = document.getElementById("rightReceiverButton");
@@ -21,7 +26,7 @@ window.onload = function () {
     rightSenderButton.addEventListener('click', controlClick);
     leftReceiverButton.addEventListener('click', controlClick);
     rightReceiverButton.addEventListener('click', controlClick);
-}
+});
 
 //functions
 function TransformItem(direct, idOfSlider) {

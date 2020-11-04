@@ -10,14 +10,14 @@ namespace RAZAM.Models
     public class RazamUser : IdentityUser
     {
         public ICollection<File> Files { get; set; }
-        public ICollection<Note> ReceivedNotes { get; set; }
-        public ICollection<Note> SendedNotes { get; set; }
+        //public ICollection<Note> ReceivedNotes { get; set; }
+        //public ICollection<Note> SendedNotes { get; set; }
 
         public RazamUser()
         {
             Files = new List<File>();
-            ReceivedNotes = new List<Note>();
-            SendedNotes = new List<Note>();
+            //ReceivedNotes = new List<Note>();
+            //SendedNotes = new List<Note>();
         }
     }
  
