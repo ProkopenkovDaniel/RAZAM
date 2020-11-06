@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RAZAM.Models;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Ajax.Utilities;
+using System.Runtime.Remoting.Channels;
 
 namespace RAZAM.Controllers
 {
@@ -20,7 +22,77 @@ namespace RAZAM.Controllers
 
         public ActionResult Notes()
         {
-            return View();
+            /*Getting the Id if current user*/
+            RazamUserManager userManager = HttpContext.GetOwinContext()
+                                            .GetUserManager<RazamUserManager>();
+            RazamUser user = userManager.FindByName(User.Identity.Name);
+            ViewBag.UserId = user.Id;
+            /*Get the List of Notes from DataBase, there has to be condition*/
+            var userNotes = from note in db.Notes
+                            join sender in db.Users on note.SenderId equals sender.Id
+                            join receiver in db.Users on note.ReceiverId equals receiver.Id
+                            select new UserNote
+                            {
+                                id = note.id,
+                                Name = note.Name,
+                                Description = note.Description,
+                                Date = note.Date,
+                                Status = note.Status,
+                                SenderId = sender.Id,
+                                SenderName = sender.UserName,
+                                ReceiverId = receiver.Id,
+                                ReceiverName = receiver.UserName
+                            };
+            /*Sort notes by Datatime*/
+            return View(userNotes.ToList());
+        }
+
+        public ActionResult AddNote(Note note)
+        {
+            RazamUserManager userManager = HttpContext.GetOwinContext()
+                                            .GetUserManager<RazamUserManager>();
+            RazamUser user = userManager.FindByName(User.Identity.Name);
+            RazamUser us = db.Users.Find(user.Id);
+            RazamUser receiver = db.Users.Find("865f4ca1-dcbd-4a2d-a2af-f3ab771207f9");
+            if (us == null || receiver == null)
+            {
+                return Redirect("/Home/Files");
+            }
+            //note.Receiver = receiver;
+            note.ReceiverId = receiver.Id;
+           // note.Sender = us;
+            note.SenderId = us.Id;
+            note.Date = DateTime.Now;
+            note.Status = State.unread;
+            db.Notes.Add(note);
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
+        }
+
+        public ActionResult AcceptNote(int? Id)
+        {
+            var notes = db.Notes;
+            Note no = db.Notes.Find(Id);
+            if (no == null)
+            {
+                return Redirect("/Home/Notes");
+            }
+            no.Status = State.accepted;
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
+        }
+
+        public ActionResult DeflectNote(int? Id)
+        {
+            var notes = db.Notes;
+            Note no = db.Notes.Find(Id);
+            if (no == null)
+            {
+                return Redirect("/Home/Notes");
+            }
+            no.Status = State.deflected;
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
         }
 
         public ActionResult Events()
@@ -85,7 +157,7 @@ namespace RAZAM.Controllers
             db.Files.Add(fi);
             db.SaveChanges();
 
-            var files = db.Files;
+            //var files = db.Files;
             return Redirect("/Home/Files");
         }
 
