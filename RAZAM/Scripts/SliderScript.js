@@ -15,9 +15,6 @@ setTimeout(function () {
     }, 30000);
 //the main method
 window.addEventListener("load", function () {
-    //setTimeout(function () {
-    //    window.location.reload(), 30000
-    //});
     var leftSenderButton = document.getElementById("leftSenderButton");
     var rightSenderButton = document.getElementById("rightSenderButton");
     var rightReceiverButton = document.getElementById("rightReceiverButton");
@@ -27,6 +24,23 @@ window.addEventListener("load", function () {
     leftReceiverButton.addEventListener('click', controlClick);
     rightReceiverButton.addEventListener('click', controlClick);
 });
+
+window.addEventListener("load", function () {
+    var sliderItemsStyle = document.querySelectorAll('.slider_item');
+    CheckNotesStatus(sliderItemsStyle)
+});
+
+function CheckNotesStatus(sliderItemsStyle) {
+    sliderItemsStyle.forEach(function (item, index) {
+        var card = item.querySelector('.card');
+        var cardBody = card.querySelector('.card-body');
+        var inputStatus = cardBody.querySelector("#Status");
+        var status = inputStatus.value;
+        if (status != null) {
+            card.classList.add(status);
+        }
+    });
+}
 
 //functions
 function TransformItem(direct, idOfSlider) {

@@ -67,7 +67,32 @@ namespace RAZAM.Controllers
             db.Notes.Add(note);
             db.SaveChanges();
             return Redirect("/Home/Notes");
+        }
 
+        public ActionResult AcceptNote(int? Id)
+        {
+            var notes = db.Notes;
+            Note no = db.Notes.Find(Id);
+            if (no == null)
+            {
+                return Redirect("/Home/Notes");
+            }
+            no.Status = State.accepted;
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
+        }
+
+        public ActionResult DeflectNote(int? Id)
+        {
+            var notes = db.Notes;
+            Note no = db.Notes.Find(Id);
+            if (no == null)
+            {
+                return Redirect("/Home/Notes");
+            }
+            no.Status = State.deflected;
+            db.SaveChanges();
+            return Redirect("/Home/Notes");
         }
 
         public ActionResult Events()

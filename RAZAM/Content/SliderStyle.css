@@ -77,3 +77,20 @@
 .acceptLink {
     color: #50C878;
 }
+
+.unread{
+
+}
+.deflected {
+    border: 2px solid #d53838;
+    border-radius: 10px;
+    margin: .5rem !important;
+}
+.executed{
+
+}
+.accepted {
+    border: 2px solid #50C878;
+    border-radius: 10px;
+    margin: .5rem !important;
+}

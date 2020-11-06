@@ -2,12 +2,23 @@
 <div class="slider_item">
     <div class="card">
         <div class="card-body mx-2 my-2">
-            <h5 class="card-title">From 
-            @Model.SenderName</h5>
+            @Html.HiddenFor(Model => Model.Status)
+            <h5 class="card-title">
+                From
+                @Model.SenderName
+            </h5>
             <h6 class="card-subtitle mb-2 text-muted">@Model.Name</h6>
             <p class="card-text">@Model.Description</p>
-            <a href="#" class="card-link deflectLink">Deflect</a>
-            <a href="#" class="card-link acceptLink">Accept</a>
+            @using (Html.BeginForm("DeflectNote/" + Model.id.ToString(), "Home", FormMethod.Get))
+            {
+                <button class="deflectLink">Deflect</button>
+            }
+            @*<a href="#" class="card-link deflectLink">Deflect</a>*@
+            @using (Html.BeginForm("AcceptNote/" + Model.id.ToString(), "Home", FormMethod.Get))
+            {
+                <button class="acceptLink">Accept</button>
+            }
+            @*<a href="#" class="card-link acceptLink">Accept</a>*@
         </div>
     </div>
 </div>
