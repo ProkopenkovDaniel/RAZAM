@@ -7,7 +7,7 @@ namespace RAZAM.Models
 {
     public class NewNoteStatus
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public State NewStatus { get; set; }
     }
 }
