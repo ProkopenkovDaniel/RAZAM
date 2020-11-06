@@ -325,6 +325,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NewNoteStatus.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\RazamContext.cs" />
     <Compile Include="Models\RazamUser.cs" />

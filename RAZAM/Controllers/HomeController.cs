@@ -8,6 +8,8 @@ using RAZAM.Models;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Ajax.Utilities;
 using System.Runtime.Remoting.Channels;
+using System.Net;
+using System.Net.Http;
 
 namespace RAZAM.Controllers
 {
@@ -58,9 +60,7 @@ namespace RAZAM.Controllers
             {
                 return Redirect("/Home/Files");
             }
-            //note.Receiver = receiver;
             note.ReceiverId = receiver.Id;
-           // note.Sender = us;
             note.SenderId = us.Id;
             note.Date = DateTime.Now;
             note.Status = State.unread;
@@ -69,7 +69,7 @@ namespace RAZAM.Controllers
             return Redirect("/Home/Notes");
         }
 
-        public void ChangeNoteStatus(NewNoteStatus noteStatus)
+        public ActionResult ChangeNoteStatus(NewNoteStatus noteStatus)
         {
             var notes = db.Notes;
             Note no = db.Notes.Find(noteStatus.Id);
@@ -78,6 +78,7 @@ namespace RAZAM.Controllers
                 no.Status = noteStatus.NewStatus;
                 db.SaveChanges();
             }
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Events()
