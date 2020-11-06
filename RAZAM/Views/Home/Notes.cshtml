@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RAZAM.Models.Note>
+﻿
+@model IEnumerable<RAZAM.Models.UserNote>
 @{
     ViewBag.Title = "Notes";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,9 +17,9 @@
             <div class="modal-body">
                 @using (Html.BeginForm("AddNote", "Home", FormMethod.Post))
                 {
-                    <p>Name of the event:</p>
+                    <p>Name of the Note:</p>
                     @Html.TextBox("Name", "name")
-                    <p>Location:</p>
+                    <p>Description:</p>
                     @Html.TextBox("Description", "location")
                     @*<p>The receiver:</p>
                     //The list of users if grout has to be here
@@ -40,17 +41,17 @@
     <div class="row">
         <div class="slider" id="SenderSlider">
             <div class="slider_wrapper">
-                @foreach (RAZAM.Models.Note note in Model)
+                @foreach (RAZAM.Models.UserNote note in Model)
                 {
-                    if (note.Sender.Id.ToString() == ViewBag.UserId)
+                    if (note.SenderId.ToString() == ViewBag.UserId)
                     {
                         /*Status cheking has to be here*/
                         @Html.Partial("SenderNoteTip", note)
                     }
                 }
             </div>
-            <a class="slider_control slider_control_left SenderSliderControl" id="leftReceiverButton" href="#"><</a>
-            <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightReceiverButton" href="#">></a>
+            <a class="slider_control slider_control_left SenderSliderControl" id="leftSenderButton" href="#"><</a>
+            <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightSenderButton" href="#">></a>
         </div>
     </div>
 </div>
@@ -59,16 +60,16 @@
     <div class="row">
         <div class="slider" id="ReceiverSlider">
             <div class="slider_wrapper">
-                @foreach (RAZAM.Models.Note note in Model)
+                @foreach (RAZAM.Models.UserNote note in Model)
                 {
-                    if (note.Receiver == ViewBag.UserId)
+                    if (note.ReceiverId == ViewBag.UserId)
                     {
-                        @Html.Partial("NoteTip", note)
+                        @Html.Partial("ReceiverNoteTip", note)
                     }
                 }
             </div>
-            <a class="slider_control slider_control_left ReceiverSliderControl" id="leftSenderButton" href="#"><</a>
-            <a class="slider_control slider_control_right slider_control_show ReceiverSliderControl" id="rightSenderButton" href="#">></a>
+            <a class="slider_control slider_control_left ReceiverSliderControl" id="leftReceiverButton" href="#"><</a>
+            <a class="slider_control slider_control_right slider_control_show ReceiverSliderControl" id="rightReceiverButton" href="#">></a>
         </div>
     </div>
 </div>

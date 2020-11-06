@@ -313,29 +313,13 @@
     <Compile Include="Migrations\202010231333518_AddingGuidForFileModel.designer.cs">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010261039386_AddedNoteTable.cs" />
-    <Compile Include="Migrations\202010261039386_AddedNoteTable.designer.cs">
-      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
+    <Compile Include="Migrations\202011040935508_AddNoteTable.cs" />
+    <Compile Include="Migrations\202011040935508_AddNoteTable.designer.cs">
+      <DependentUpon>202011040935508_AddNoteTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010281214569_ChangeNoteModel.cs" />
-    <Compile Include="Migrations\202010281214569_ChangeNoteModel.designer.cs">
-      <DependentUpon>202010281214569_ChangeNoteModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010291314020_RecoverDataBase.cs" />
-    <Compile Include="Migrations\202010291314020_RecoverDataBase.designer.cs">
-      <DependentUpon>202010291314020_RecoverDataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010291319361_RecoverDataBaseAgain.cs" />
-    <Compile Include="Migrations\202010291319361_RecoverDataBaseAgain.designer.cs">
-      <DependentUpon>202010291319361_RecoverDataBaseAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010291340004_RecoverDB.cs" />
-    <Compile Include="Migrations\202010291340004_RecoverDB.designer.cs">
-      <DependentUpon>202010291340004_RecoverDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010300949101_AddIdField.cs" />
-    <Compile Include="Migrations\202010300949101_AddIdField.designer.cs">
-      <DependentUpon>202010300949101_AddIdField.cs</DependentUpon>
+    <Compile Include="Migrations\202011041343564_CleanUpTheNoteTable.cs" />
+    <Compile Include="Migrations\202011041343564_CleanUpTheNoteTable.designer.cs">
+      <DependentUpon>202011041343564_CleanUpTheNoteTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
@@ -346,6 +330,7 @@
     <Compile Include="Models\RazamUser.cs" />
     <Compile Include="Models\RazamUserManager.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserNote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -438,23 +423,11 @@
     <EmbeddedResource Include="Migrations\202010231333518_AddingGuidForFileModel.resx">
       <DependentUpon>202010231333518_AddingGuidForFileModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010261039386_AddedNoteTable.resx">
-      <DependentUpon>202010261039386_AddedNoteTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011040935508_AddNoteTable.resx">
+      <DependentUpon>202011040935508_AddNoteTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010281214569_ChangeNoteModel.resx">
-      <DependentUpon>202010281214569_ChangeNoteModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010291314020_RecoverDataBase.resx">
-      <DependentUpon>202010291314020_RecoverDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010291319361_RecoverDataBaseAgain.resx">
-      <DependentUpon>202010291319361_RecoverDataBaseAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010291340004_RecoverDB.resx">
-      <DependentUpon>202010291340004_RecoverDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010300949101_AddIdField.resx">
-      <DependentUpon>202010300949101_AddIdField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011041343564_CleanUpTheNoteTable.resx">
+      <DependentUpon>202011041343564_CleanUpTheNoteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -347,9 +347,5 @@ D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.Deleteuser.resou
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.UserIdTypeChanging.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeFileModelMigration.resources
 D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddingGuidForFileModel.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddedNoteTable.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.ChangeNoteModel.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBase.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDataBaseAgain.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.RecoverDB.resources
-D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddIdField.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.AddNoteTable.resources
+D:\!DOCUMENTS\!!PRAKTIKA\RAZAM\RAZAM\obj\Debug\RAZAM.Migrations.CleanUpTheNoteTable.resources
