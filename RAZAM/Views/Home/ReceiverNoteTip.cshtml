@@ -1,6 +1,6 @@
 ﻿@model RAZAM.Models.UserNote
 <div class="slider_item" id=@Model.id>
-    <div class="card">
+    <div class="card @Model.Status">
         <div class="card-body mx-2 my-2">
             @Html.HiddenFor(Model => Model.Status)
             <h5 class="card-title">
@@ -9,18 +9,9 @@
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">@Model.Name</h6>
             <p class="card-text">@Model.Description</p>
-            @using (Ajax.BeginForm("ChangeNoteStatus", "Home", new AjaxOptions { UpdateTargetId = Model.id.ToString(), HttpMethod = "Post" }))
-            {
-                @Html.HiddenFor(Model => Model.id)
-                <input id="NewStatus" name="NewStatus" type="hidden" value="deflected" />
-                <button class="deflectLink">Deflect</button>
-            }
-            @using (Ajax.BeginForm("ChangeNoteStatus", "Home", new AjaxOptions { UpdateTargetId = Model.id.ToString(), HttpMethod = "Post" }))
-            {
-                @Html.HiddenFor(Model => Model.id)
-                <input id="NewStatus" name="NewStatus" type="hidden" value="accepted" />
-                <button class="acceptLink">Accept</button>
-            }
+            <button class="deflectLink button" value="deflected">Deflect</button>
+            <button class="acceptLink button" value="accepted">Accept</button>
+            <button class="executeLink button" value="executed">Done</button>
         </div>
     </div>
 </div>

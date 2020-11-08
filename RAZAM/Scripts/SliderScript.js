@@ -10,11 +10,17 @@ var itemWidth;
 var positionLeftItem = 0;
 var transform = 0;
 var step;
+
+//Reload page for test
 setTimeout(function () {
     window.location.reload();
     }, 30000);
 //the main method
-window.addEventListener("load", function () {
+window.addEventListener("load", AddListenerForSlider);
+window.addEventListener("load", RefreshStatuses);
+window.addEventListener("load", CardButtonClickEvent);
+
+function AddListenerForSlider() {
     var leftSenderButton = document.getElementById("leftSenderButton");
     var rightSenderButton = document.getElementById("rightSenderButton");
     var rightReceiverButton = document.getElementById("rightReceiverButton");
@@ -23,14 +29,14 @@ window.addEventListener("load", function () {
     rightSenderButton.addEventListener('click', controlClick);
     leftReceiverButton.addEventListener('click', controlClick);
     rightReceiverButton.addEventListener('click', controlClick);
-});
+}
 
-window.addEventListener("load", function () {
+function RefreshStatuses() {
     var sliderItemsStyle = document.querySelectorAll('.slider_item');
-    CheckNotesStatus(sliderItemsStyle)
-});
+    RefrechNotesStatus(sliderItemsStyle)
+}
 
-function CheckNotesStatus(sliderItemsStyle) {
+function RefrechNotesStatus(sliderItemsStyle) {
     sliderItemsStyle.forEach(function (item, index) {
         var card = item.querySelector('.card');
         var cardBody = card.querySelector('.card-body');
@@ -41,6 +47,46 @@ function CheckNotesStatus(sliderItemsStyle) {
         }
     });
 }
+
+function CardButtonClickEvent() {
+    var sliderItemsStyle = document.querySelectorAll('.slider_item');
+    sliderItemsStyle.forEach(function (item, index) {
+        var card = item.querySelector('.card');
+        var cardBody = card.querySelector('.card-body');
+        var buttons = cardBody.querySelectorAll('.button');
+        buttons.forEach(function (item, index) {
+            item.addEventListener('click', CardButtonClick)
+        });
+    });
+}
+
+function CardButtonClick(e) {
+    if (e.target.classList.contains('button')) {
+        e.preventDefault();
+        var item = e.target;
+        var status = item.value;
+    }
+    ChangeNoteStatus(item, status);
+}
+
+function ChangeNoteStatus(item, status) {
+    var cardBody = item.parentElement;
+    var card = cardBody.parentElement;
+    if (status != null) {
+        card.classList.forEach(function (item, intex) {
+            if (item != 'card') {
+                card.classList.remove(item);
+            }
+        })
+        card.classList.add(status);
+        //hardCode --
+        var inputStatus = cardBody.querySelector("#Status");
+        inputStatus.value = status
+        //--
+    }
+
+}
+
 
 //functions
 function TransformItem(direct, idOfSlider) {
