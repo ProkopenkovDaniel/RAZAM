@@ -1,0 +1,26 @@
+﻿.AddModalButton {
+    background-color: #50C878;
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:5px;
+}
+
+.modal-header{
+    margin-top: 20px;
+}
+
+.modalH {
+    font-size: 20px;
+    font-weight: 600;
+    color: #50C878;
+}
+
+.CloseButton {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
