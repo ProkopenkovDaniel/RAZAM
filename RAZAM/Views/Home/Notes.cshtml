@@ -21,9 +21,8 @@
                     @Html.TextBox("Name", "name")
                     <p>Description:</p>
                     @Html.TextBox("Description", "location")
-                    @*<p>The receiver:</p>
-                    //The list of users if grout has to be here
-                    @Html.TextBox("Receiver.UserName", "receiver")*@
+                    <p>The receiver:</p>
+                    @Html.DropDownList("ReceiverId", ViewBag.Users as SelectList)
                     <p><input type="submit" value="Add" /></p>
                 }
             </div>

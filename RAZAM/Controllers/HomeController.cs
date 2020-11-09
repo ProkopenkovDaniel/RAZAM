@@ -46,6 +46,10 @@ namespace RAZAM.Controllers
                                 ReceiverName = receiver.UserName
                             };
             /*Sort notes by Datatime*/
+            SelectList users = new SelectList(db.Users.Where(u=>u.Id != user.Id), "Id", "UserName");
+            
+            ViewBag.Users = users;
+
             return View(userNotes.ToList());
         }
 
@@ -55,12 +59,10 @@ namespace RAZAM.Controllers
                                             .GetUserManager<RazamUserManager>();
             RazamUser user = userManager.FindByName(User.Identity.Name);
             RazamUser us = db.Users.Find(user.Id);
-            RazamUser receiver = db.Users.Find("865f4ca1-dcbd-4a2d-a2af-f3ab771207f9");
-            if (us == null || receiver == null)
+            if (us == null || note.ReceiverId == null)
             {
                 return Redirect("/Home/Files");
             }
-            note.ReceiverId = receiver.Id;
             note.SenderId = us.Id;
             note.Date = DateTime.Now;
             note.Status = State.unread;
@@ -69,16 +71,23 @@ namespace RAZAM.Controllers
             return Redirect("/Home/Notes");
         }
 
-        public ActionResult ChangeNoteStatus(NewNoteStatus noteStatus)
+        public ActionResult ChangeNoteStatus(int noteId, State status)
         {
             var notes = db.Notes;
-            Note no = db.Notes.Find(noteStatus.Id);
-            if (no != null)
+            Note no = db.Notes.Find(noteId);
+            try
             {
-                no.Status = noteStatus.NewStatus;
-                db.SaveChanges();
+                if (no != null)
+                {
+                    no.Status = status;
+                    db.SaveChanges();
+                }
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
+            }
         }
 
         public ActionResult Events()

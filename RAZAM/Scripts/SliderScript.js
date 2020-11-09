@@ -17,7 +17,7 @@ setTimeout(function () {
     }, 30000);
 //the main method
 window.addEventListener("load", AddListenerForSlider);
-window.addEventListener("load", RefreshStatuses);
+//window.addEventListener("load", RefreshStatuses);
 window.addEventListener("load", CardButtonClickEvent);
 
 function AddListenerForSlider() {
@@ -31,22 +31,22 @@ function AddListenerForSlider() {
     rightReceiverButton.addEventListener('click', controlClick);
 }
 
-function RefreshStatuses() {
-    var sliderItemsStyle = document.querySelectorAll('.slider_item');
-    RefrechNotesStatus(sliderItemsStyle)
-}
+//function RefreshStatuses() {
+//    var sliderItemsStyle = document.querySelectorAll('.slider_item');
+//    RefrechNotesStatus(sliderItemsStyle)
+//}
 
-function RefrechNotesStatus(sliderItemsStyle) {
-    sliderItemsStyle.forEach(function (item, index) {
-        var card = item.querySelector('.card');
-        var cardBody = card.querySelector('.card-body');
-        var inputStatus = cardBody.querySelector("#Status");
-        var status = inputStatus.value;
-        if (status != null) {
-            card.classList.add(status);
-        }
-    });
-}
+//function RefrechNotesStatus(sliderItemsStyle) {
+//    sliderItemsStyle.forEach(function (item, index) {
+//        var card = item.querySelector('.card');
+//        var cardBody = card.querySelector('.card-body');
+//        var inputStatus = cardBody.querySelector("#Status");
+//        var status = inputStatus.value;
+//        if (status != null) {
+//            card.classList.add(status);
+//        }
+//    });
+//}
 
 function CardButtonClickEvent() {
     var sliderItemsStyle = document.querySelectorAll('.slider_item');
@@ -56,6 +56,9 @@ function CardButtonClickEvent() {
         var buttons = cardBody.querySelectorAll('.button');
         buttons.forEach(function (item, index) {
             item.addEventListener('click', CardButtonClick)
+            if (item.classList.contains("acceptLink")) {
+                item.addEventListener('click', AcceptNoteClick);
+            }
         });
     });
 }
@@ -83,10 +86,39 @@ function ChangeNoteStatus(item, status) {
         var inputStatus = cardBody.querySelector("#Status");
         inputStatus.value = status
         //--
+        var UrlLink = cardBody.querySelector("#UrlLink");
+        var url = UrlLink.href;
+        var slider_item = card.parentElement;
+        var id = slider_item.id;
+        var NoteStatus = {
+            noteId: id,
+            status: status
+        };
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: NoteStatus,
+            success: function () {
+                console.log("Status has changed successfully");
+            },
+            error: function(){
+                console.log("Status hasn't changed successfully");
+            }
+        });
     }
 
 }
 
+function AcceptNoteClick(e) {
+    var cardBody = e.target.parentElement;
+    var card = cardBody.parentElement;
+    AcceptNote(e.target);
+}
+
+function AcceptNote(item) {
+    item.classList.toggle('none');
+    item.nextElementSibling.classList.toggle('none');
+}
 
 //functions
 function TransformItem(direct, idOfSlider) {

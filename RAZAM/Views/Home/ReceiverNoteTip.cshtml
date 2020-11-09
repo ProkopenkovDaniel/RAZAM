@@ -9,9 +9,10 @@
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">@Model.Name</h6>
             <p class="card-text">@Model.Description</p>
-            <button class="deflectLink button" value="deflected">Deflect</button>
-            <button class="acceptLink button" value="accepted">Accept</button>
-            <button class="executeLink button" value="executed">Done</button>
+            <button class="deflectLink button cardButton btn" value="deflected">Deflect</button>
+            <button class="acceptLink button cardButton btn" value="accepted" >Accept</button>
+            <button class="executeLink button cardButton btn none" value="executed">Done</button>
+            @Html.ActionLink("UrlLink", "ChangeNoteStatus", null, new { @style = "display:none", id = "UrlLink" })
         </div>
     </div>
 </div>
