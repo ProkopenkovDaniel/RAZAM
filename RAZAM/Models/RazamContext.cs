@@ -19,17 +19,5 @@ namespace RAZAM.Models
         {
             return new RazamContext();
         }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Note>()
-        //        .HasRequired(o => o.Receiver)
-        //        .WithMany(c => c.Notes)
-        //        .HasForeignKey(o => o.ReceiverId);
-
-        //    modelBuilder.Entity<Note>()
-        //        .HasRequired(o => o.Sender)
-        //        .WithMany(c => c.Notes)
-        //        .HasForeignKey(o => o.SenderId);
-        //}
     }
 }

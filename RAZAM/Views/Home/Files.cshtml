@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Files";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @Scripts.Render("~/Scripts/main.js")
 }
 <div class="Add">
     <div class="container">
@@ -14,7 +15,7 @@
         <div id="dialogContent" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="modalH">Add Event</span>
+                    <span class="modalH">Add file</span>
                     <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body">

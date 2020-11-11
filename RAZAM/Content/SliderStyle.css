@@ -60,6 +60,26 @@
 .card-body {
     margin: 1.5rem !important;
 }
+
+.card-header {
+    margin: 1.5rem !important;
+    margin-bottom: 0;
+    color: #808080;
+}
+.DateTime {
+    color: #808080;
+    display: block;
+    font-weight: 600;
+}
+.card-title {
+    font-weight: 800;
+    text-align: right;
+}
+
+.card-subtitle {
+    font-weight: 800;
+    color: #808080;
+}
 .card {
     border: 2px solid #808080;
     border-radius: 10px;
@@ -82,6 +102,12 @@
 
 .card_text{
 
+}
+
+.deleteLink {
+    color: #fff;
+    font-weight: 600;
+    background-color: #d53838;
 }
 .deflectLink {
     color: #fff;
@@ -116,6 +142,7 @@
     border: 2px solid #50C878;
     border-radius: 10px;
     margin: .5rem !important;
+    background-color: rgba(80,200,120, 0.20);
 }
 .accepted {
     border: 2px solid #2468D3;

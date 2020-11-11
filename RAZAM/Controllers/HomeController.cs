@@ -10,6 +10,7 @@ using Microsoft.Ajax.Utilities;
 using System.Runtime.Remoting.Channels;
 using System.Net;
 using System.Net.Http;
+using System.Deployment.Internal;
 
 namespace RAZAM.Controllers
 {
@@ -88,6 +89,19 @@ namespace RAZAM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotModified);
             }
+        }
+
+        public ActionResult DeleteNote(int Id)
+        {
+            var notes = db.Notes;
+            Note no = db.Notes.Find(Id);
+            if (no == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
+            }
+            db.Notes.Remove(no);
+            db.SaveChanges();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Events()

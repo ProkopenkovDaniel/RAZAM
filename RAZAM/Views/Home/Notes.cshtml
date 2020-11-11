@@ -1,29 +1,30 @@
 ﻿
+@using RAZAM.Models
 @model IEnumerable<RAZAM.Models.UserNote>
 @{
     ViewBag.Title = "Notes";
     Layout = "~/Views/Shared/_Layout.cshtml";
     @Scripts.Render("~/Scripts/SliderScript.js");
+    @Scripts.Render("~/Scripts/main.js")
     @Styles.Render("~/Content/SliderStyle.css");
 }
-<h2>Added Notes</h2>
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <span class="modalH">Add Event</span>
-                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+            <div class="modal-header" style="margin-top:50px">
+                <span class="modalH">Add Note</span>
+                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">X</button>
             </div>
             <div class="modal-body">
                 @using (Html.BeginForm("AddNote", "Home", FormMethod.Post))
                 {
                     <p>Name of the Note:</p>
-                    @Html.TextBox("Name", "name")
+                    @Html.TextBox("Name", "name", new { @class = "box" })
                     <p>Description:</p>
-                    @Html.TextBox("Description", "location")
+                    @Html.TextBox("Description", "location", new { @class = "box" })
                     <p>The receiver:</p>
-                    @Html.DropDownList("ReceiverId", ViewBag.Users as SelectList)
-                    <p><input type="submit" value="Add" /></p>
+                    @Html.DropDownList("ReceiverId", ViewBag.Users as SelectList, new { @class = "box" })
+                    @*<p>*@<input type="submit" value="Add" class="AddModalButton  btn-block Button" />@*</p>*@
                 }
             </div>
         </div>
@@ -32,10 +33,11 @@
 <div class="Add">
     <div class="container">
         <div class="row">
-            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add file</button></div>
+            <div class="col-lg-offset-8"><button class="AddButton btn-block Button" id="AddButton" area-hidden="true">Add Note</button></div>
         </div>
     </div>
 </div>
+<h2>Added Notes</h2>
 <div class="container">
     <div class="row">
         <div class="slider" id="SenderSlider">
@@ -61,7 +63,8 @@
             <div class="slider_wrapper">
                 @foreach (RAZAM.Models.UserNote note in Model)
                 {
-                    if (note.ReceiverId == ViewBag.UserId)
+                    if (note.ReceiverId == ViewBag.UserId && note.Status != State.deflected
+                        && note.Status != State.executed)
                     {
                         @Html.Partial("ReceiverNoteTip", note)
                     }

@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Scripts/main.js")
     <link href="~/Content/ModalWindowStyle.css" rel="stylesheet" />
 </head>
 <body>
@@ -31,9 +30,11 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <footer class="footer">
+            <hr />
             <p>&copy; @DateTime.Now.Year - Razam App (DP)</p>
         </footer>
     </div>

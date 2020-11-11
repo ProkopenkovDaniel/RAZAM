@@ -11,14 +11,11 @@ var positionLeftItem = 0;
 var transform = 0;
 var step;
 
-//Reload page for test
-setTimeout(function () {
-    window.location.reload();
-    }, 30000);
 //the main method
 window.addEventListener("load", AddListenerForSlider);
-//window.addEventListener("load", RefreshStatuses);
+window.addEventListener("load", RefreshStatuses);
 window.addEventListener("load", CardButtonClickEvent);
+window.addEventListener("load", DeleteButtonClickEvent);
 
 function AddListenerForSlider() {
     var leftSenderButton = document.getElementById("leftSenderButton");
@@ -31,25 +28,71 @@ function AddListenerForSlider() {
     rightReceiverButton.addEventListener('click', controlClick);
 }
 
-//function RefreshStatuses() {
-//    var sliderItemsStyle = document.querySelectorAll('.slider_item');
-//    RefrechNotesStatus(sliderItemsStyle)
-//}
+function RefreshStatuses() {
+    var slider = document.querySelector('#ReceiverSlider');
+    var sliderItemsStyle = slider.querySelectorAll('.slider_item');
+    RefrechNotesStatus(sliderItemsStyle)
+}
 
-//function RefrechNotesStatus(sliderItemsStyle) {
-//    sliderItemsStyle.forEach(function (item, index) {
-//        var card = item.querySelector('.card');
-//        var cardBody = card.querySelector('.card-body');
-//        var inputStatus = cardBody.querySelector("#Status");
-//        var status = inputStatus.value;
-//        if (status != null) {
-//            card.classList.add(status);
-//        }
-//    });
-//}
+function RefrechNotesStatus(sliderItemsStyle) {
+    sliderItemsStyle.forEach(function (item, index) {
+        var card = item.querySelector('.card');
+        var cardBody = card.querySelector('.card-body');
+        var inputStatus = cardBody.querySelector("#Status");
+        var status = inputStatus.value;
+        if (status == 'accepted') {
+            var acceptButton = cardBody.querySelector('.acceptLink');
+            AcceptNote(acceptButton);
+        }
+    });
+}
+
+function DeleteButtonClickEvent() {
+    var slider = document.querySelector('#SenderSlider');
+    var sliderItemsStyle = slider.querySelectorAll('.slider_item');
+    sliderItemsStyle.forEach(function (item, index) {
+        var card = item.querySelector('.card');
+        var cardBody = card.querySelector('.card-body');
+        var button = cardBody.querySelector('.button');
+        button.addEventListener('click', DeleteNoteClick);
+    });
+}
+
+function DeleteNoteClick(e) {
+    var cardBody = e.target.parentElement;
+    var card = cardBody.parentElement;
+    var item = card.parentElement;
+    DeleteNoteView(item);
+    if (e.target.value == 'delete') {
+        var id = item.id;
+        DeleteNoteBase(item, id);
+    }
+
+}
+function DeleteNoteView(item) {
+    item.remove();
+}
+function DeleteNoteBase(item, id) {
+    var card = item.querySelector('.card');
+    var cardBody = card.querySelector('.card-body');
+    var UrlLink = cardBody.querySelector("#UrlLink");
+    var url = UrlLink.href;
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: { id: id },
+        success: function () {
+            console.log("Note has deleted successfully");
+        },
+        error: function () {
+            console.log("Note hasn't deleted successfully");
+        }
+    });
+}
 
 function CardButtonClickEvent() {
-    var sliderItemsStyle = document.querySelectorAll('.slider_item');
+    var slider = document.querySelector('#ReceiverSlider');
+    var sliderItemsStyle = slider.querySelectorAll('.slider_item');
     sliderItemsStyle.forEach(function (item, index) {
         var card = item.querySelector('.card');
         var cardBody = card.querySelector('.card-body');
@@ -58,6 +101,8 @@ function CardButtonClickEvent() {
             item.addEventListener('click', CardButtonClick)
             if (item.classList.contains("acceptLink")) {
                 item.addEventListener('click', AcceptNoteClick);
+            } else {
+                item.addEventListener('click', DeleteNoteClick);
             }
         });
     });
