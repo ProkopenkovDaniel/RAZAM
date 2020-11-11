@@ -1,12 +1,22 @@
 ﻿@model RAZAM.Models.UserNote
-<div class="slider_item">
-    <div class="card">
+<div class="slider_item" id=@Model.id>
+    <div class="card @Model.Status">
+        <div class="card-header">
+            <h5 class="card-title">
+                To:
+                @Model.ReceiverName
+                <span class="DateTime">
+                    @Model.Date.ToShortDateString()
+                    @Model.Date.ToShortTimeString()
+                </span>
+            </h5>
+        </div>
         <div class="card-body mx-2 my-2">
             @Html.HiddenFor(Model => Model.Status)
-            <h5 class="card-title">To @Model.ReceiverName</h5>
-            <h6 class="card-subtitle mb-2 text-muted">@Model.Name</h6>
-            <p class="card-text">@Model.Description</p>
-            <a href="#" class="card-link deflectLink">Delete</a>
+            <h5 class="card-subtitle mb-2">@Model.Name</h5>
+            <p class="card-text text-muted">@Model.Description</p>
+            <button class="deleteLink button cardButton btn" value="delete">Delete</button>
+            @Html.ActionLink("UrlLink", "DeleteNote", null, new { @style = "display:none", id = "UrlLink" })
         </div>
     </div>
 </div>

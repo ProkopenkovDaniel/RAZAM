@@ -1,13 +1,13 @@
 ﻿@model RAZAM.Models.Event
 <div class="row EventTip Tip">
+    <div class="col-lg-2">@Model.DateTime.ToShortDateString() @Model.DateTime.ToShortTimeString()</div>
+    <div class="col-lg-1">@Model.Type</div>
+    <div class="col-lg-4">@Model.Name</div>
+    <div class="col-lg-4">@Model.Place</div>
     <div class="col-lg-1">
-        @using (Html.BeginForm("DelEvent/"+Model.Id.ToString(), "Home", FormMethod.Get))
+        @using (Html.BeginForm("DelEvent/" + Model.Id.ToString(), "Home", FormMethod.Get))
         {
             <button class="btn-danger" id="DelButton" value="@Model.Id">X</button>
         }
     </div>
-    <div class="col-lg-1">@Model.Type</div>
-    <div class="col-lg-4">@Model.Name</div>
-    <div class="col-lg-4">@Model.Place</div>
-    <div class="col-lg-2">@Model.DateTime.ToShortDateString() @Model.DateTime.ToShortTimeString()</div>
 </div>

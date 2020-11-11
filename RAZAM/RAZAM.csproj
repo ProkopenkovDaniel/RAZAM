@@ -325,6 +325,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NewNoteStatus.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\RazamContext.cs" />
     <Compile Include="Models\RazamUser.cs" />
@@ -338,6 +339,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ModalWindowStyle.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\SliderScript.js" />
     <Content Include="Content\SliderStyle.css" />

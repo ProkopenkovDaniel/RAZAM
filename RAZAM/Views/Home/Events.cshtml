@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @Scripts.Render("~/Scripts/main.js")
 }
 
 <div class="Add">
@@ -14,9 +15,9 @@
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="margin-top:75px">
                 <span class="modalH">Add Event</span>
-                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+                <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">X</button>
             </div>
             <div class="modal-body">
                 @using (Html.BeginForm("AddEvent", "Home", FormMethod.Post))
@@ -29,7 +30,7 @@
                     @Html.TextBox("DateTime", @DateTime.Now.Date)
                     <p>Type of event:</p>
                     @Html.TextBox("Type", "RC")
-                    <p><input type="submit" value="Add"/></p>
+                    <p><input type="submit" value="Add" class="AddModalButton  btn-block Button" /></p>
                 }
             </div>
         </div>
@@ -43,7 +44,7 @@
         }
     </div>
 </div>
-@*@section scripts
+@section scripts
 {
     <script type="text/javascript">
         window.onload = function () {
@@ -56,6 +57,6 @@
             modal.style.opacity = 1;
         }
     </script>
-}*@
+}
 
 

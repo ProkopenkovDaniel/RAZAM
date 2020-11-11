@@ -8,6 +8,9 @@ using RAZAM.Models;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Ajax.Utilities;
 using System.Runtime.Remoting.Channels;
+using System.Net;
+using System.Net.Http;
+using System.Deployment.Internal;
 
 namespace RAZAM.Controllers
 {
@@ -44,6 +47,10 @@ namespace RAZAM.Controllers
                                 ReceiverName = receiver.UserName
                             };
             /*Sort notes by Datatime*/
+            SelectList users = new SelectList(db.Users.Where(u=>u.Id != user.Id), "Id", "UserName");
+            
+            ViewBag.Users = users;
+
             return View(userNotes.ToList());
         }
 
@@ -53,14 +60,10 @@ namespace RAZAM.Controllers
                                             .GetUserManager<RazamUserManager>();
             RazamUser user = userManager.FindByName(User.Identity.Name);
             RazamUser us = db.Users.Find(user.Id);
-            RazamUser receiver = db.Users.Find("865f4ca1-dcbd-4a2d-a2af-f3ab771207f9");
-            if (us == null || receiver == null)
+            if (us == null || note.ReceiverId == null)
             {
                 return Redirect("/Home/Files");
             }
-            //note.Receiver = receiver;
-            note.ReceiverId = receiver.Id;
-           // note.Sender = us;
             note.SenderId = us.Id;
             note.Date = DateTime.Now;
             note.Status = State.unread;
@@ -69,30 +72,36 @@ namespace RAZAM.Controllers
             return Redirect("/Home/Notes");
         }
 
-        public ActionResult AcceptNote(int? Id)
+        public ActionResult ChangeNoteStatus(int noteId, State status)
         {
             var notes = db.Notes;
-            Note no = db.Notes.Find(Id);
-            if (no == null)
+            Note no = db.Notes.Find(noteId);
+            try
             {
-                return Redirect("/Home/Notes");
+                if (no != null)
+                {
+                    no.Status = status;
+                    db.SaveChanges();
+                }
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            no.Status = State.accepted;
-            db.SaveChanges();
-            return Redirect("/Home/Notes");
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
+            }
         }
 
-        public ActionResult DeflectNote(int? Id)
+        public ActionResult DeleteNote(int Id)
         {
             var notes = db.Notes;
             Note no = db.Notes.Find(Id);
             if (no == null)
             {
-                return Redirect("/Home/Notes");
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
             }
-            no.Status = State.deflected;
+            db.Notes.Remove(no);
             db.SaveChanges();
-            return Redirect("/Home/Notes");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Events()

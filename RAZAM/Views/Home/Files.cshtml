@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Files";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @Scripts.Render("~/Scripts/main.js")
 }
 <div class="Add">
     <div class="container">
@@ -14,15 +15,15 @@
         <div id="dialogContent" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="modalH">Add Event</span>
-                    <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">Close</button>
+                    <span class="modalH">Add file</span>
+                    <button class="CloseButton close" id="CloseAddButton" data-dismiss="modal">X</button>
                 </div>
                 <div class="modal-body">
                     @using (Html.BeginForm("AddFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <p>Path to your file:</p>
+                        <p class="ModalLabel">Path to your file:</p>
                         <input type="file" name="file" />
-                        <p><input type="submit" value="Add" /></p>
+                        <p><input type="submit" value="Add" class="AddModalButton  btn-block Button" /></p>
                     }
                 </div>
             </div>
@@ -37,3 +38,24 @@
         }
     </div>
 </div>
+@section scripts
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var addButton = document.getElementById("AddButton");
+            var closeButton = document.getElementById("CloseAddButton");
+            addButton.onclick = ModalWindowShow;
+            closeButton.onclick = ModalWindowHide;
+        }
+        function ModalWindowShow() {
+            var modal = document.getElementById("modDialog");
+            modal.style.display = "block"
+            modal.style.opacity = 1;
+        }
+        function ModalWindowHide() {
+            var modal = document.getElementById("modDialog");
+            modal.style.display = "none"
+            modal.style.opacity = 0;
+        }
+    </script>
+}
