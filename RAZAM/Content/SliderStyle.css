@@ -1,6 +1,8 @@
 ﻿.slider {
     position: relative;
     overflow: hidden;
+    padding-left:0px;
+    padding-right: 0px;
 }
 
 .slider_wrapper {
@@ -15,7 +17,6 @@
 
 .slider_control {
     position: absolute;
-    top: 50%;
     display: none;
     align-items: center;
     justify-content: center;
@@ -25,6 +26,13 @@
     opacity: 0.5;
     transform: translateX(-50%);
     background: rgba(0,0,0, .5);
+    border: 2px solid #808080;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .slider_control_show {

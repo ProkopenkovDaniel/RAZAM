@@ -47,11 +47,20 @@ namespace RAZAM.Controllers
                                 ReceiverName = receiver.UserName
                             };
             /*Sort notes by Datatime*/
+            List<UserNote> noteList = userNotes.ToList();
+            noteList.Sort(delegate (UserNote x, UserNote y)
+            {
+                if (x.Date == null && y.Date == null) return 0;
+                else if (x.Date == null) return -1;
+                else if (y.Date == null) return 1;
+                else return x.Date.CompareTo(y.Date);
+            });
+            noteList.Reverse();
             SelectList users = new SelectList(db.Users.Where(u=>u.Id != user.Id), "Id", "UserName");
             
             ViewBag.Users = users;
 
-            return View(userNotes.ToList());
+            return View(noteList);
         }
 
         public ActionResult AddNote(Note note)
@@ -107,7 +116,23 @@ namespace RAZAM.Controllers
         public ActionResult Events()
         {
             var events = db.Events;
-            return View(events.ToList());
+            List<Event> evList = events.ToList();
+            evList.Sort(delegate (Event x, Event y)
+            {
+                if (x.DateTime == null && y.DateTime == null) return 0;
+                else if (x.DateTime == null) return -1;
+                else if (y.DateTime == null) return 1;
+                else return x.DateTime.CompareTo(y.DateTime);
+            });
+            List<Event> eventList = new List<Event>();
+            evList.ForEach(delegate (Event ev)
+            {
+                if(ev.DateTime >= DateTime.Now)
+                {
+                    eventList.Add(ev);
+                }
+            });
+            return View(eventList);
         }
 
         [HttpPost]
@@ -129,15 +154,23 @@ namespace RAZAM.Controllers
             }
             db.Events.Remove(ev);
             db.SaveChanges();
-            events = db.Events;
-            return View("Events", events.ToList());
+            return Redirect("/Home/Events");
         }
 
         public ActionResult Files()
         {
             ViewBag.Users = db.Users.ToList();
             var files = db.Files;
-            return View(files.ToList());
+            List<File> fiList = files.ToList();
+            fiList.Sort(delegate (File x, File y)
+            {
+                if (x.Date == null && y.Date == null) return 0;
+                else if (x.Date == null) return -1;
+                else if (y.Date == null) return 1;
+                else return x.Date.CompareTo(y.Date);
+            });
+            fiList.Reverse();
+            return View(fiList);
         }
 
         [HttpPost]
