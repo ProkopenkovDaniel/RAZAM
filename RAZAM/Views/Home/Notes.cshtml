@@ -40,20 +40,26 @@
 <h2>Added Notes</h2>
 <div class="container">
     <div class="row">
-        <div class="slider" id="SenderSlider">
-            <div class="slider_wrapper">
-                @foreach (RAZAM.Models.UserNote note in Model)
-                {
-                    if (note.SenderId.ToString() == ViewBag.UserId)
-                    {
-                        /*Status cheking has to be here*/
-                        @Html.Partial("SenderNoteTip", note)
-                    }
-                }
+        <div id="SenderSlider">
+            <div class="col-lg-1">
+                <a class="slider_control slider_control_left SenderSliderControl" id="leftSenderButton" href="#"><</a>
             </div>
-            <a class="slider_control slider_control_left SenderSliderControl" id="leftSenderButton" href="#"><</a>
-            <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightSenderButton" href="#">></a>
-        </div>
+            <div class="slider col-lg-10">
+                <div class="slider_wrapper">
+                    @foreach (RAZAM.Models.UserNote note in Model)
+                    {
+                        if (note.SenderId.ToString() == ViewBag.UserId)
+                        {
+                            /*Status cheking has to be here*/
+                            @Html.Partial("SenderNoteTip", note)
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightSenderButton" href="#">></a>
+            </div>
+         </div>
     </div>
 </div>
 <h2>My Notes</h2>
