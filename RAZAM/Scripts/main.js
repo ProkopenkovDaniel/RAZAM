@@ -21,4 +21,9 @@ function ModalWindowHide() {
     modal.style.display = "none"
     modal.style.opacity = 0;
     modal.classList.remove("Showed");
+    var modalBody = modal.querySelector('.modal-body');
+    var inputs = modalBody.querySelectorAll('.box');
+    inputs.forEach(function (item, index) {
+        item.style = "border: 1px solid #222222;";
+    });
 }

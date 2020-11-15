@@ -48,19 +48,11 @@
 }
 
 .slider_control_left {
-    left: 0;
+    left: 40px;
 }
 
 .slider_control_right {
     right: 0;
-}
-
-.slider_control_left::before {
-    background-image: url('../img/left.png');
-}
-
-.slider_control_right {
-    background-image: url('../img/right.png');
 }
 
 .slider_item > div {

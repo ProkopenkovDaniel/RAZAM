@@ -1,22 +1,35 @@
-﻿body {
+﻿html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: stretch;
+    min-height: 100%;
     padding-top: 50px;
     padding-bottom: 20px;
-    height: 100%;
+    flex: 1 1 auto;
 }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    display: flex;
-    flex-direction: column;
 }
 .content {
-    flex: 1 0 auto;
 }
 
 footer {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+}
+
+footer>p{
+    text-align: center;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -70,4 +83,8 @@ textarea {
 
 .show {
     display: block !important;
+}
+
+.red {
+    border: 2px solid #d53838;
 }

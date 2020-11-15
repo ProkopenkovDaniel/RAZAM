@@ -22,15 +22,15 @@
             <div class="modal-body">
                 @using (Html.BeginForm("AddEvent", "Home", FormMethod.Post))
                 {
-                    <p>Name of the event:</p>
-                    @Html.TextBox("Name", "name")
+                    <p>Title of the event:</p>
+                    @Html.TextBox("Name", null, new { @class = "box", placeholder = "Title" })
                     <p>Location:</p>
-                    @Html.TextBox("Place", "location")
+                    @Html.TextBox("Place", null, new { @class = "box", placeholder = "Place" })
                     <p>Date & Time:</p>
-                    @Html.TextBox("DateTime", @DateTime.Now.Date)
-                    <p>Type of event:</p>
-                    @Html.TextBox("Type", "RC")
-                    <p><input type="submit" value="Add" class="AddModalButton  btn-block Button" /></p>
+                    @Html.TextBox("DateTime", null, new { @class = "box", placeholder = @DateTime.Now.Date } )
+                    <p>Type of the event:</p>
+                    @Html.TextBox("Type", null, new { @class = "box", placeholder = "Team"})
+                    <p><input type="submit" value="Add" class="AddModalButton  btn-block Button" id="AddEventButton" /></p>
                 }
             </div>
         </div>
@@ -44,19 +44,5 @@
         }
     </div>
 </div>
-@section scripts
-{
-    <script type="text/javascript">
-        window.onload = function () {
-            var button = document.getElementById("AddButton");
-            button.onclick = ModalWindowShow;
-        }
-        function ModalWindowShow() {
-            var modal = document.getElementById("modDialog");
-            modal.style.display = "block"
-            modal.style.opacity = 1;
-        }
-    </script>
-}
 
 

@@ -18,13 +18,13 @@
             <div class="modal-body">
                 @using (Html.BeginForm("AddNote", "Home", FormMethod.Post))
                 {
-                    <p>Name of the Note:</p>
-                    @Html.TextBox("Name", "name", new { @class = "box" })
+                    <p>Title of the Note:</p>
+                    @Html.TextBox("Name", null, new { @class = "box", placeholder = "Title" })
                     <p>Description:</p>
-                    @Html.TextBox("Description", "location", new { @class = "box" })
+                    @Html.TextBox("Description", null, new { @class = "box", placeholder = "Description" })
                     <p>The receiver:</p>
-                    @Html.DropDownList("ReceiverId", ViewBag.Users as SelectList, new { @class = "box" })
-                    @*<p>*@<input type="submit" value="Add" class="AddModalButton  btn-block Button" />@*</p>*@
+                    @Html.DropDownList("ReceiverId", ViewBag.Users as SelectList, new { @class = "box", placeholder="Receiver Name" })
+                    <p><input type="submit" value="Add" class="AddModalButton  btn-block Button" id="AddEventButton"/></p>
                 }
             </div>
         </div>
@@ -37,10 +37,14 @@
         </div>
     </div>
 </div>
-<h2>Added Notes</h2>
+<div class="row">
+    <div class="col-lg-offset-1">
+        <h2>Added Notes</h2>
+    </div>
+</div>
 <div class="container">
     <div class="row">
-        <div id="SenderSlider">
+        <div  class="sl" id="SenderSlider">
             <div class="col-lg-1">
                 <a class="slider_control slider_control_left SenderSliderControl" id="leftSenderButton" href="#"><</a>
             </div>
@@ -57,29 +61,39 @@
                 </div>
             </div>
             <div class="col-lg-1">
-                <a class="slider_control slider_control_right slider_control_show SenderSliderControl" id="rightSenderButton" href="#">></a>
+                <a class="slider_control slider_control_right  SenderSliderControl" id="rightSenderButton" href="#">></a>
             </div>
          </div>
     </div>
 </div>
-<h2>My Notes</h2>
-<div class="container">
-    <div class="row">
-        <div class="slider" id="ReceiverSlider">
-            <div class="slider_wrapper">
-                @foreach (RAZAM.Models.UserNote note in Model)
-                {
-                    if (note.ReceiverId == ViewBag.UserId && note.Status != State.deflected
-                        && note.Status != State.executed)
-                    {
-                        @Html.Partial("ReceiverNoteTip", note)
-                    }
-                }
-            </div>
-            <a class="slider_control slider_control_left ReceiverSliderControl" id="leftReceiverButton" href="#"><</a>
-            <a class="slider_control slider_control_right slider_control_show ReceiverSliderControl" id="rightReceiverButton" href="#">></a>
+<div class="row">
+    <div class="col-lg-offset-1">
+        <h2>My Notes</h2>
         </div>
     </div>
-</div>
+        <div class="container">
+            <div class="row">
+                <div class="sl" id="ReceiverSlider">
+                    <div class="col-lg-1">
+                        <a class="slider_control slider_control_left ReceiverSliderControl" id="leftReceiverButton" href="#"><</a>
+                    </div>
+                    <div class="slider col-lg-10">
+                        <div class="slider_wrapper">
+                            @foreach (RAZAM.Models.UserNote note in Model)
+                            {
+                                if (note.ReceiverId == ViewBag.UserId && note.Status != State.deflected
+                                    && note.Status != State.executed)
+                                {
+                                    @Html.Partial("ReceiverNoteTip", note)
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                        <a class="slider_control slider_control_right ReceiverSliderControl" id="rightReceiverButton" href="#">></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 

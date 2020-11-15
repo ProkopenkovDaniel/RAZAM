@@ -16,6 +16,23 @@ window.addEventListener("load", AddListenerForSlider);
 window.addEventListener("load", RefreshStatuses);
 window.addEventListener("load", CardButtonClickEvent);
 window.addEventListener("load", DeleteButtonClickEvent);
+window.addEventListener("load", CheckControlButton);
+
+function CheckControlButton() {
+    var sliders = document.querySelectorAll(".sl");
+    sliders.forEach(function (item, index) {
+        var items = item.querySelectorAll(".slider_item");
+        var controlButton = item.querySelector(".slider_control_right");
+        if (items.length <= 3) {
+            if (controlButton.classList.contains("slider_control_show")) {
+                controlButton.classList.remove("slider_control_show");
+            }
+        } else {
+            controlButton.classList.add("slider_control_show");
+        }
+    });
+
+}
 
 function AddListenerForSlider() {
     var leftSenderButton = document.getElementById("leftSenderButton");
@@ -56,6 +73,7 @@ function DeleteButtonClickEvent() {
         var button = cardBody.querySelector('.button');
         button.addEventListener('click', DeleteNoteClick);
     });
+
 }
 
 function DeleteNoteClick(e) {
@@ -67,6 +85,7 @@ function DeleteNoteClick(e) {
         var id = item.id;
         DeleteNoteBase(item, id);
     }
+    CheckControlButton();
 
 }
 function DeleteNoteView(item) {
